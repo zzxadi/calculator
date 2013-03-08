@@ -1,0 +1,106 @@
+<html>
+<head>
+  <meta http-equiv="content-type" charset="utf-8" />
+  <title>abc</title>  
+	<style type="text/css">	    
+		#main {
+			width: 560px;
+			margin: 40px auto;
+		}
+		#btn {
+			clear: both;	
+			text-align: center;
+		}
+		#btn input {
+			background: #999;
+			width: 100px;
+			height: 40px;
+			border: 0 none;
+			font: bold 16px/18px 微软雅黑;	
+			cursor: pointer;
+			margin: 40px;
+		}
+		#btn input:hover {
+			background: #000;
+			color: #fff;
+		}
+		body {
+			text-align: center;
+		}
+		.circle { 
+			width: 100px; 
+			height: 100px; 
+			background: #FFC0CB; 
+			border
+			-moz-border-radius: 50px; 
+			-webkit-border-radius: 50px; 
+			border-radius: 50px; 
+			float: left;
+			margin: 5px;
+			cursor: pointer;
+			 -webkit-transition:0.5s all;/*动画过渡时间为1s*/
+		    -moz-transition:0.5s all;
+		    -o-transition:0.5s all;
+		    transition:0.5s all;
+		}
+		.circle:hover, .circle.actived {
+			background: #DB7093;
+		}
+		.circle span {
+			line-height: 100px;
+			color: #666;
+			font-weight: bold;
+		}
+	</style>
+	<title>choose to eat</title>
+</head>
+
+<body>
+	<div id="main">
+		<div class="circle"><span>A</span></div>
+		<div class="circle"><span>B</span></div>
+		<div class="circle"><span>C</span></div>
+	</div>
+	
+	<div id="btn">
+		<input type="button" value="开始选择" onclick="cj()"/>
+	</div>
+	<script type="text/javascript">
+		function cj(){
+			
+			var main = document.getElementById('main');
+			var c = main.childNodes;
+			var circles = [];
+			for (var i = 0; i < c.length; i++) {
+				if (c[i].nodeName === 'DIV') {
+					circles.push(c[i]);
+				}
+			}
+			
+			var r = Math.ceil(Math.random() * (circles.length-1)) + 1;
+			
+			for (var i = 0; i < circles.length; i++) {
+				circles[i].className = 'circle';
+			}
+			
+			var j = 0
+			var task = setInterval(function(){
+				for (var i = 0; i < circles.length; i++) {
+					circles[i].className = 'circle';
+				}
+				var k = j % circles.length;
+				circles[k].className = circles[k].className + ' actived';	
+				if (j == 10) {
+					for (var i = 0; i < circles.length; i++) {
+						circles[i].className = 'circle';
+					}
+					
+					circles[r - 1].className = circles[r - 1].className + ' actived';	
+					clearInterval(task);
+				}
+				j++;
+			}, 500);
+		}
+	</script>
+</body>
+</html>

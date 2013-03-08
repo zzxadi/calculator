@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="reset.css" />
+<style type="text/css">
+ 	body {font: 12px/1.5 tahoma,arial,"宋体";}
+	h2 {font-size: 14px;}
+	h3 {font-size: 12px;}
+	a {
+		color: #fff;
+		text-decoration: none;
+	}
+	.sidebar {
+		margin: 40px auto 0;
+		width: 400px;
+	}
+
+    li.sidebar_tab_cur {
+    margin-left: -7px;
+	padding-left: 12px;
+	-moz-border-radius: 8px 0 0 8px;/* FF浏览器低版本 圆角 */
+	-webkit-border-radius: 8px 0 0 8px;/* Chrome和Safari浏览器 圆角  */
+	border-radius: 8px 0 0 8px;
+	behavior: url(../js/tool_iecss3.htc);/* IE浏览器 圆角 */ 
+ }
+</style>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        /*切换导航，添加当前效果*/
+        $(".sidebar_tab li a").click(function() {
+            $(this).parent("li").addClass("sidebar_tab_cur");
+            $(this).parent("li").siblings().removeClass("sidebar_tab_cur");
+        });
+    });
+  </script> 
+
+</head>
+
+<body>
+ <div class="sidebar">
+      <ul class="sidebar_tab">
+        <li class="sidebar_tab_all sidebar_tab_cur"><a href="#">所有商品</a></li>
+        <li class="sidebar_tab_shop"><a href="#">所有商品</a></li>
+        <li class="sidebar_tab_city"><a href="#">所有商品</a></li>
+      </ul>
+ </div>
+</body>
+</html>
